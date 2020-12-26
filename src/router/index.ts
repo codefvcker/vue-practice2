@@ -4,8 +4,8 @@ import Dashboard from '../views/Dashboard.vue'
 
 import RegisterPage from '../views/RegisterPage.vue'
 import LoginPage from '../views/LoginPage.vue'
-import Calendar from '../views/Calendar.vue'
-import Targets from '../views/Targets.vue'
+import Characters from '../views/Characters.vue'
+import Locations from '../views/Locations.vue'
 
 Vue.use(VueRouter)
 
@@ -17,16 +17,16 @@ const routes: Array<RouteConfig> = [
     component: Dashboard,
   },
   {
-    path: '/calendar',
-    name: 'Calendar',
+    path: '/characters',
+    name: 'Characters',
     meta: { layout: 'main' },
-    component: () => import('../views/Calendar.vue'),
+    component: () => import('../views/Characters.vue'),
   },
   {
-    path: '/targets',
-    name: 'Targets',
+    path: '/locations',
+    name: 'Locations',
     meta: { layout: 'main' },
-    component: () => import('../views/Targets.vue'),
+    component: () => import('../views/Locations.vue'),
   },
   {
     path: '/login',

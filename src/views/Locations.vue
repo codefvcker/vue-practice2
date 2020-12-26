@@ -1,6 +1,6 @@
 <template>
   <div>
-    Calendar
+    Locations
   </div>
 </template>
 

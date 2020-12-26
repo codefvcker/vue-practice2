@@ -1,8 +1,4 @@
-<template>
-  <div>
-    Targets
-  </div></template
->
+<template> </template>
 
 <script>
 export default {}

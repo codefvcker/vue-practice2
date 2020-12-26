@@ -29,6 +29,33 @@
     <a href="#" data-target="slide-out" class="sidenav-trigger"
       ><i class="material-icons ac">{{ icon }}</i></a
     >
+
+    <nav class="sidebar--nav  teal darken-1">
+      <div class="nav-wrapper">
+        <form>
+          <div class="input-field">
+            <input id="search" type="search" required />
+            <label class="label-icon" for="search"
+              ><i class="material-icons">search</i></label
+            >
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+        <ul class="right hide-on-med-and-down">
+          <!-- Dropdown Trigger -->
+          <li>
+            <a class="dropdown-trigger" ref="dropdown" data-target="dropdown1"
+              >Dropdown<i class="material-icons right">arrow_drop_down</i></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="#!">Account</a></li>
+      <li class="divider"></li>
+      <li><a href="#!">Log out</a></li>
+    </ul>
   </div>
 </template>
 
@@ -43,34 +70,41 @@ export default class Sidebar extends Vue {
   sidebar = false
   items = [
     { title: 'Dashboard', url: '/', exact: true },
-    { title: 'Calendar', url: '/calendar' },
-    { title: 'Targets', url: '/targets' },
+    { title: 'Characters', url: '/characters' },
+    { title: 'Locations', url: '/locations' },
   ]
+  dropdown = false
 
   mounted() {
     this.sidebar = M.Sidenav.init(this.$refs.sidebar, {
       onOpenStart: () => this.$emit('openSidebarHandler', true),
       onCloseStart: () => this.$emit('openSidebarHandler', false),
     })
+
+    this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
+      constrainWidth: true,
+    })
   }
 
   get icon() {
     return this.sidebar.isOpen ? 'close' : 'menu'
   }
-
-  // openSidebarHandler() {
-  //   this.$emit('openSidebarHandler')
-  // }
 }
 </script>
 
-<style>
+<style lang="scss">
 .ac {
-  /* width: 100px;
-  height: 100px; */
   font-size: 50px;
+  color: #00695c;
 }
-/* .open {
-  color: #fff;
-} */
+.sidebar {
+  display: flex;
+  background: #ccc;
+  &--nav {
+    border-radius: 30px;
+  }
+}
+.sidenav-trigger {
+  padding: 7px;
+}
 </style>

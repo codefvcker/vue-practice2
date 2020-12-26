@@ -1,6 +1,6 @@
 <template>
   <div>
-    Dashboard
+    <div class="header">Dashboard</div>
   </div>
 </template>
 
@@ -11,4 +11,8 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped></style>
+<style>
+#search {
+  cursor: pointer;
+}
+</style>

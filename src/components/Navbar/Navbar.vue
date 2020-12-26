@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import Sidebar from '../Sidebar/Sidebar'
 export default {
   data: () => ({
     dropdown: null,
@@ -36,6 +37,9 @@ export default {
     this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
       constrainWidth: true,
     })
+  },
+  components: {
+    Sidebar,
   },
 }
 </script>
