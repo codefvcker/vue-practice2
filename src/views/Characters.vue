@@ -1,10 +1,23 @@
 <template>
   <div>
-    <ul>
-      <li v-for="charecter of dd" :key="charecter.id">
-        {{ charecter.name }}
-      </li>
-    </ul>
+    <div
+      v-infinite-scroll="loadMore"
+      infinite-scroll-disabled="isLoading"
+      infinite-scroll-distance="20"
+    >
+      <ul class="row">
+        <li
+          class="col s6 card-item"
+          is="card"
+          v-for="charecter of charecters"
+          :key="charecter.id"
+          :content="charecter"
+        >
+          {{ charecter.name }}
+        </li>
+      </ul>
+    </div>
+    <Spiner />
   </div>
 </template>
 
@@ -12,12 +25,37 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
-@Component()
+import Card from '@/components/Card/Card'
+import Spiner from '@/components/Spiner/Spiner'
+
+var count = 0
+
+@Component({
+  components: { Card, Spiner },
+})
 export default class Characters extends Vue {
   chars = {}
+  busy = false
 
-  get dd() {
-    return this.$store.getters.characters
+  // datax = []
+  // busy = false
+
+  async loadMore() {
+    // this.busy = true
+    await this.$store.dispatch('getNextContentPage')
+    // .then(() => (this.busy = false))
+    // console.log('RRREEESS - ', res)
+    // if (res) {
+    // this.busy = false
+    // }
+  }
+
+  get isLoading() {
+    return this.$store.getters.isLoading
+  }
+
+  get charecters() {
+    return this.$store.getters.content
   }
 
   // updated() {
@@ -25,10 +63,15 @@ export default class Characters extends Vue {
   // }
 
   mounted() {
-    this.$store.dispatch('getCharacters')
+    this.$store.dispatch('getContent', 'character')
     // this.chars = this.$store.getters.characters
   }
 }
 </script>
 
-<style></style>
+<style lang="scss">
+.card-item {
+  width: 48% !important;
+  margin: 10px !important;
+}
+</style>
