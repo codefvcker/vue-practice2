@@ -26,7 +26,7 @@ import LocationCard from '@/components/Card/LocationCard'
 })
 export default class Locations extends Vue {
   mounted() {
-    this.$store.dispatch('getContent', 'location')
+    this.$store.dispatch('getContent', { type: 'location' })
   }
 
   async loadMore() {
@@ -40,14 +40,10 @@ export default class Locations extends Vue {
   }
 
   get locations() {
-    console.log('LOCS - ', this.$store.getters.content)
+    // console.log('LOCS - ', this.$store.getters.content)
     return this.$store.getters.content
   }
 }
 </script>
 
-<style lang="scss">
-.location-card {
-  min-height: 300px;
-}
-</style>
+<style lang="scss"></style>

@@ -72,6 +72,7 @@ export default class Sidebar extends Vue {
     { title: 'Dashboard', url: '/', exact: true },
     { title: 'Characters', url: '/characters' },
     { title: 'Locations', url: '/locations' },
+    { title: 'Episods', url: '/episods' },
   ]
   dropdown = false
 

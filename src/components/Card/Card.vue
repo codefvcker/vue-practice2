@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <router-link :to="link" class="card">
     <div class="card-img--wrap">
       <img :src="content.image" alt="card-img" />
     </div>
@@ -24,7 +24,7 @@
         <span class="card-seen--descr"> {{ episode }} episode </span>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -48,9 +48,13 @@ export default class Card extends Vue {
     return false
   }
 
-  //   mounted() {
-  //     console.log(this.content)
-  //   }
+  mounted() {
+    console.log(this.content)
+  }
+
+  get link() {
+    return `charecter/${this.content.id}`
+  }
 
   get status() {
     let lowedStatus = this.content.status.toLowerCase()

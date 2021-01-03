@@ -63,7 +63,7 @@ export default class Characters extends Vue {
   // }
 
   mounted() {
-    this.$store.dispatch('getContent', 'character')
+    this.$store.dispatch('getContent', { type: 'character' })
     // this.chars = this.$store.getters.characters
   }
 }

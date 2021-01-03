@@ -23,10 +23,22 @@ const routes: Array<RouteConfig> = [
     component: () => import('../views/Characters.vue'),
   },
   {
+    path: '/charecter/:id',
+    name: 'CharacterPage',
+    meta: { layout: 'main' },
+    component: () => import('../views/details/CharecterPage.vue'),
+  },
+  {
     path: '/locations',
     name: 'Locations',
     meta: { layout: 'main' },
     component: () => import('../views/Locations.vue'),
+  },
+  {
+    path: '/episods',
+    name: 'Episods',
+    meta: { layout: 'main' },
+    component: () => import('../views/Episods.vue'),
   },
   {
     path: '/login',

@@ -5,31 +5,24 @@
         <div class="card-content">
           <span class="card-title">{{ content.name }}</span>
           <div>
-            <strong>{{ content.type }}</strong>
+            <strong>{{ content.episode }}</strong>
           </div>
           <div>
-            <strong>{{ content.dimension }}</strong>
+            <strong>{{ content.air_date }}</strong>
           </div>
         </div>
-        <!-- <div class="card-action">
-          <a href="#">This is a link</a>
-        </div> -->
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
   props: ['content'],
 })
-export default class LocationCard extends Vue {}
+export default class EpisodeCard extends Vue {}
 </script>
 
-<style lang="scss">
-.card {
-  min-height: 180px;
-}
-</style>
+<style lang="scss"></style>

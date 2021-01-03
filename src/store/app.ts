@@ -3,7 +3,10 @@ import { Commit, Dispatch, Store } from 'vuex'
 
 const url = 'https://rickandmortyapi.com/api/'
 
-type TItemQueryType = 'character' | 'location' | 'episode'
+type TItemQueryType = {
+  type: 'character' | 'location' | 'episode'
+  id?: number | number[]
+}
 
 export default {
   state: {
@@ -28,13 +31,10 @@ export default {
     },
   },
   actions: {
-    async getContent(
-      { commit }: { commit: Commit },
-      itemsType: TItemQueryType
-    ) {
+    async getContent({ commit }: { commit: Commit }, { type }: TItemQueryType) {
       try {
         commit('setIsLoading')
-        const res: any = await axios.get(`${url}${itemsType}`)
+        const res: any = await axios.get(`${url}${type}`)
         commit('setNextPage', res.data.info.next)
         commit('setContent', res.data.results)
         commit('setIsLoading')
@@ -62,6 +62,14 @@ export default {
         }
       } catch (e) {
         console.log('ERROR GET - ', e.message)
+      }
+    },
+    async getItemsById(state: any, { type, id }: TItemQueryType) {
+      try {
+        const res = await axios.get(`${url}${type}/${id}`)
+        return res.data
+      } catch (e) {
+        console.log('ERROR IS - ', e.message)
       }
     },
   },
