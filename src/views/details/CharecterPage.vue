@@ -11,7 +11,12 @@
     <div>
       <button @click="getEpisodes" class="btn">Show episodes</button>
       <ul v-if="episodes">
-        <chunk-card tag="li" v-for="episode in episodes" :key="episode.id">
+        <chunk-card
+          tag="li"
+          v-for="episode in episodes"
+          :link="`/episode/${episode.id}`"
+          :key="episode.id"
+        >
           {{ episode.name }}
         </chunk-card>
       </ul>

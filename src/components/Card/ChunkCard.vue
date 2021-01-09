@@ -1,14 +1,16 @@
 <template>
-  <div class="card">
+  <router-link tag="div" :to="link" class="card">
     <slot />
-  </div>
+  </router-link>
 </template>
 
-<script>
-import { Vue, Component } from 'vue-property-decorator'
+<script lang="ts">
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
-@Component()
-export default class ChunkCard extends Vue {}
+@Component
+export default class ChunkCard extends Vue {
+  @Prop() readonly link!: string
+}
 </script>
 
 <style lang="scss"></style>

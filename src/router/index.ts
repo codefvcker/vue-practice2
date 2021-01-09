@@ -35,10 +35,22 @@ const routes: Array<RouteConfig> = [
     component: () => import('../views/Locations.vue'),
   },
   {
+    path: '/location/:id',
+    name: 'LocationPage',
+    meta: { layout: 'main' },
+    component: () => import('../views/details/LocationPage.vue'),
+  },
+  {
     path: '/episods',
     name: 'Episods',
     meta: { layout: 'main' },
     component: () => import('../views/Episods.vue'),
+  },
+  {
+    path: '/episode/:id',
+    name: 'EpisodePage',
+    meta: { layout: 'main' },
+    component: () => import('../views/details/EpisodePage.vue'),
   },
   {
     path: '/login',
